@@ -1,0 +1,14 @@
+I need a highly skill engineer to write a small app to read whois record and format it into a table within a UI.
+
+deliverables:
+1-UI to enter a domain name and to view the raw whois record 
+2-Develop a separate program collect the raw who (web service)
+3-Develop a separate program to parse the raw whois record (web service)
+4-UI to display the parsed whois records
+
+Use Case:
+the USER enters a domain (i.e. example.com) then press enter
+the SYSTEM returns the whois record (unparsed)
+The USER will press a button on the UI called "parse"
+the SYSTEM will parse the raw whois record 
+the SYSTEM will display the parsed whois record in a table

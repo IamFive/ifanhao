@@ -1,0 +1,28 @@
+{% extends "basic.html" %} 
+{% block title %} Comics - {{comic.title}} {% endblock title %} 
+{% block content %}
+<ol class="breadcrumb">
+  <li><a href="/">首页</a></li>
+  <li><a href="/comics">漫画</a></li>
+  <li class="active">{{comic.title}}</li>
+</ol>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title ellipsis">{{comic.title}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+		  <div class="col-md-8">
+			  <div class="col-md-3">
+			     <img alt="{{comic.title}}" title="{{comic.title}}" src="{{comic.cover_url}}">
+			  </div>
+		  </div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<span>更新至[第{{comic.lated_seqno}}话]</span>
+	</div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends "basic.html" %} 
+{% block title %} Comics {% endblock title %} 
+{% block content %}
+<div class="row">
+	<div class="col-md-3">
+		<div role="complementary">
+			<ul class="nav nav-stacked nav-pills">
+				<li>
+				    <input type="search" class="form-control" 
+				        id="exampleInputEmail2" placeholder="搜索">
+				</li>
+				<li ><a href="#">我的收藏<span class="pull-right glyphicon glyphicon-chevron-right"></span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="row">
+			{% for comic in comics%}
+			<div class="col-sm-3 col-md-3 col-lg-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title ellipsis" data-toggle="tooltip" 
+						  data-placement="bottom" data-original-title="{{comic.title}}">
+						  {{comic.title}}
+						</h3>
+					</div>
+					<div class="panel-body">
+					   <a href="/comics/{{comic.id}}">
+                        <img alt="{{comic.title}}" title="{{comic.title}}" src="{{comic.cover_url}}"
+                            class="img-responsive">
+					   </a>
+                    </div>
+                    <div class="panel-footer">
+                        <span>更新至[第{{comic.lated_seqno}}话]</span>
+                    </div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+

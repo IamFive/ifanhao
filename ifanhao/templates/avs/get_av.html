@@ -1,0 +1,108 @@
+{% extends "basic.html" %} {% block title %} 番号 {% endblock title %} {% block content %}
+<!-- breadcrumb -->
+<ol class="breadcrumb">
+	<li><a href="/">首页</a></li>
+	<li><a href="/a/">番号</a></li>
+	<li class="active">{{av.code}}</li>
+</ol>
+
+<!-- header -->
+<div class="page-header">
+	<p class="lead ellipsis">
+		<span class="label label-primary">{{av.code}}</span> <span><strong>{{av.title}}</strong></span>
+	</p>
+</div>
+
+<!-- content -->
+<div class="row">
+	<div class="col-md-4">
+		<div class="thumbnail text-center" style="height:180px;">
+			因为一些长城原因，暂不提供封面</div>
+	</div>
+	<div class="col-md-8">
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">番 号：</span>
+			</div>
+			<div class="col-md-10">
+				<a href='/a/{{av.code}}'>{{av.code}} <span class="glyphicon glyphicon-open"></span></a>
+			</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">教 材：</span>
+			</div>
+			<div class="col-md-10">{{av.title}}</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">发行商：</span>
+			</div>
+			<div class="col-md-10">{{av.publisher}}</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">发行日期：</span>
+			</div>
+			<div class="col-md-10">{{av.published_on}}</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">片 长：</span>
+			</div>
+			<div class="col-md-10">{{av.length}}分钟</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">演 员：</span>
+			</div>
+			<div class="col-md-10">
+				{% for actor in av.actors %} 
+					<a>{{actor.name}} <span class="glyphicon glyphicon-open"></a>{% if not loop.last %},{% endif %} 
+				{% endfor%}
+			</div>
+		</div>
+		<div class="row mb6">
+			<div class="col-md-2 text-right">
+				<span class="">分类：</span>
+			</div>
+			<div class="col-md-10">
+				{% for tag in av.tags %} 
+					<a href="/a/?tags={{tag.id}}">
+					   {{tag.name}}<span class="glyphicon glyphicon-open"></a>{% if not loop.last %},{% endif %} 
+				{% endfor%}
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
+<!-- plugins -->
+<div class="mt20">
+	<ul class="nav nav-tabs" id="tab_plugins">
+		<li class="active"><a href="#magnet" data-toggle="tab">磁力链</a></li>
+		<li><a href="#reply" data-toggle="tab">评论</a></li>
+	</ul>
+
+	<div class="tab-content tab-bordered-content">
+		<div class="tab-pane active" id="magnet">
+			<div class="row mt20">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="alert alert-warning text-center">
+						<strong>小机器人开发中,:)</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="reply">
+			<div class="row mt20">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="alert alert-warning text-center">
+						<strong>忙撸，打完这发回来添加这功能。:)</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

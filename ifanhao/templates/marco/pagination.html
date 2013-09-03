@@ -1,0 +1,23 @@
+{% macro pagebar(pagination, formname) %}
+<ul class="pagination">
+	{% if pagination.page > 1 %}
+	<li><a href="javascript:Paginate.paginate('{{formname}}', 1)">«</a></li>
+	<li><a href="javascript:Paginate.paginate('{{formname}}', {{pagination.prev_num}})">‹</a></li>
+	{% endif %} 
+	{%- for page in pagination.iter_pages(0, 2, 3, 0) %} 
+	   {% if page %} 
+	       {% if page != pagination.page %}
+	       <li><a href="javascript:Paginate.paginate('{{formname}}', {{page}})">{{ page }}</a></li>
+	       {% else %}
+	       <li class="active"><span>{{page}} <span class="sr-only">(current)</span></span></li>
+           {% endif %} 
+       {% else %}
+	   <li><span class="ellipsis">…</span></li> 
+	   {% endif %} 
+	{%- endfor %} 
+	{% if pagination.page != pagination.pages %}
+	<li><a href="javascript:Paginate.paginate('{{formname}}', {{pagination.next_num}})">›</a></li>
+	<li><a href="javascript:Paginate.paginate('{{formname}}', {{pagination.pages}})">»</a></li> 
+	{% endif %}
+</ul>
+{% endmacro %}
