@@ -8,6 +8,6 @@ from flask.globals import request, current_app
 def current_bp_processor():
     if request.endpoint:
         bp = request.endpoint.split('.')[0]
-        current_app.logger.debug('current bp is: {}'.format(bp))
+        current_app.logger.debug('current bp is: {0}'.format(bp))
         return dict(bp=bp)
     return dict()
