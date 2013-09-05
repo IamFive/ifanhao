@@ -1,0 +1,72 @@
+{% extends "basic.html" %} 
+{% block title %} AV女优 - [这里有你的女神] {% endblock title %} 
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div role="complementary">
+			<ul class="nav nav-stacked nav-pills">
+				<li>
+					<form id="f_search" name="f_search" method="post" onsubmit="javascript:A.search()">
+						<div class="input-group">
+							<input id="k" name="k" value="{{k|default('')}}" class="form-control" placeholder="演员"> <span
+								class="input-group-btn">
+								<button class="btn btn-success" type="submit">&nbsp;Goooo!&nbsp;</button>
+							</span>
+						</div>
+					</form>
+					<div class="mb12"></div>
+				</li>
+				<hr/>
+				<li>
+					<div class="panel panel-default">
+						<div class="panel-heading">演员信息</div>
+						<div class="panel-body">
+							<dl class="dl-horizontal dt80">
+								<dt>名字:</dt>
+								<dd>姫村みく</dd>
+								<dt>出生:</dt>
+								<dd>1990-01-01</dd>
+								<dt>身高:</dt>
+								<dd>162cm</dd>
+								<dt>体重:</dt>
+								<dd>48kg</dd>
+								<dt>罩杯:</dt>
+								<dd>F</dd>
+								<dt>胸围:</dt>
+								<dd>86cm</dd>
+								<dt>腰围:</dt>
+								<dd>66cm</dd>
+								<dt>臀围:</dt>
+								<dd>88cm</dd>
+							</dl>
+						</div>
+						<div class="panel-footer">
+							<button type="button" class="btn btn-success">查看作品</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+    </div>
+    <div class="col-md-9">
+        <div class="alert alert-info text-center">
+                                            演员图片整理中，页面还在修订。
+        </div>
+		<div class="row">
+			{% for actor in pagination.items %}
+			<div id="a_{{actor.id}}" class="col-sm-4 col-md-3 mb12">
+				<div class="thumbnail">
+					<img alt="" src="/m/avatar/1.jpg" class="img-rounded avatar">
+					<div class="caption text-center">
+					    <a href="#{{actor.id}}">
+						  {{actor.name}}
+						</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>	
+</div>
+{% endblock %}
+

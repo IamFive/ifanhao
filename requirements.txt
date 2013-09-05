@@ -4,6 +4,7 @@ markdown
 Flask-Assets
 Flask-Script
 flask-testing
+Flask-Uploads
 sqlalchemy
 flask-sqlalchemy
 colander

@@ -29,6 +29,62 @@ body {
 	margin-top: 20px;
 }
 
+.avatar {
+	margin-top: 10px;
+	width:125px;
+	height: 125px;
+}
+
+.dt80 dt {
+	width: 40px;
+	font-weight: normal;
+	margin-bottom: 6px;
+}
+
+.dt80 dd {
+    margin-left: 60px;
+}
+
+
+/*
+ * Callouts
+ *
+ * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Requires a base and modifier class.
+ */
+
+/* Common styles for all types */
+.bs-callout {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+  background-color: #fff;
+}
+
+/* Variations */
+.bs-callout-danger {
+  background-color: #fcf2f2;
+  border-color: #dFb5b4;
+}
+.bs-callout-warning {
+  background-color: #fefbed;
+  border-color: #f1e7bc;
+}
+.bs-callout-info {
+  background-color: #f0f7fd;
+  border-color: #d0e3f0;
+}
+
+
 .tab-bordered-content {
 	padding: 20px 14px;
 	margin-bottom: 14px;

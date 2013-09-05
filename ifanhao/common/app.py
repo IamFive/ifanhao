@@ -24,6 +24,8 @@ from logging.handlers import TimedRotatingFileHandler
 from werkzeug.utils import redirect
 import json
 import os
+from flaskext.uploads import configure_uploads
+from werkzeug.wsgi import SharedDataMiddleware
 
 
 app = None
@@ -63,6 +65,11 @@ def init_bp_modules():
 
     from ifanhao.av.views.actors import bp_actors
     app.register_blueprint(bp_actors, url_prefix='/b')
+
+    #    server media folder
+    app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
+        app.config.get('MEDIA_URL_PATH') :  app.config.get('MEDIA_FOLDER')
+    })
 
     @app.route('/api/version', methods=['GET'])
     @smart_render()
@@ -172,8 +179,13 @@ def init_db_engine():
     import ifanhao.av.models
 
 
-def init_ac_client():
-    app.ac_client = AcClient('http://m.ac.qq.com/')
+def init_uploads():
+    from ifanhao.uploads import upload_list
+    configure_uploads(app, upload_list)
+
+
+# def init_ac_client():
+#    app.ac_client = AcClient('http://m.ac.qq.com/')
 
 
 def startup_app():
@@ -182,7 +194,7 @@ def startup_app():
 
     if not app:
         args = setup_flask_initial_options()
-        app = Flask('icomic', **args)
+        app = Flask('ifanhao', **args)
 
         app.config.update(ResourceLoader.get().configs)
         app.debug = app.config.get('DEBUG', True)
@@ -193,10 +205,10 @@ def startup_app():
             init_error_handler()
             init_interceptors()
             init_bp_modules()
-            init_ac_client()
+            init_uploads()
             app.logger.info('Start success from ROOT [%s] .', ROOT)
         except Exception, e:
-            app.logger.error('Start icomic faild!')
+            app.logger.error('Start Ifanhao faild!')
             app.logger.exception(e)
             raise e
 

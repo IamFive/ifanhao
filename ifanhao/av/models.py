@@ -28,6 +28,15 @@ class Actor(db.Model, BaseModelMixin):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(64), nullable=False)
+    cn_name = Column(String(64), nullable=False)
+    avatar = Column(String(64))
+    birth = Column(Date)
+    height = Column(Integer)
+    weight = Column(Integer)
+    cup = Column(String(1))
+    chest = Column(Integer)
+    waist = Column(Integer)
+    hip = Column(Integer)
 
     def __repr__(self):
         return '<Actor name::{}>'.format(self.name.encode('utf-8'))
