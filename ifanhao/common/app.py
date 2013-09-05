@@ -97,7 +97,7 @@ def init_error_handler():
         status = ex.code if ex.code >= 400 and ex.code < 500 else 400
 
         if g.rformat == RenderFormat.HTML:
-            return render_template('{}.html'.format(status), error=ex), status
+            return render_template('{0}.html'.format(status), error=ex), status
 
         if isinstance(ex, FriendlyException) and len(ex.msg_list) == 1:
             message = ex.msg_list[0]
