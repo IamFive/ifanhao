@@ -1,14 +1,16 @@
 {% extends "basic.html" %} 
 {% block title %} 番号 {% endblock title %} 
+
 {% block script_import %}
 <script type="text/javascript" src="/static/js/modules/a.js"></script>
 {% endblock script_import%}
+
 {% block content %}
+{% from '/marco/pagination.html' import pagebar with context %} 
 <div class="row">
 	<div class="col-md-6">
 		<div role="complementary">
-			<form id="f_search" name="f_search" method="post" 
-			     onsubmit="javascript:A.search()">
+			<form id="f_search" name="f_search" method="get" onsubmit="javascript:A.search()">
 				<ul class="nav nav-stacked nav-pills">
 					<li>
 						<div class="input-group">
@@ -49,7 +51,11 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-        <div class="row">
+	    <div class="row">
+            <div class="col-md-12">{{ pagebar(pagination, 'f_search') }}</div>
+        </div>
+        <div class="row mb12">
+            <div class="col-md-12">
 			<div class="panel-group" id="av_list">
 				{% for av in pagination.items %}
 				<div class="panel panel-info">
@@ -120,10 +126,13 @@
                     </div>
 				</div>
 				{% endfor %}
+				</div>
 			</div>
 		</div>
-		{% from '/marco/pagination.html' import pagebar with context %} 
-		<div class="row">{{ pagebar(pagination, 'f_search') }}</div>
+		
+		<div class="row">
+            <div class="col-md-12">{{ pagebar(pagination, 'f_search') }}</div>
+        </div>
 		
 	</div>
 </div>

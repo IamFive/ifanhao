@@ -1,5 +1,5 @@
 {% macro pagebar(pagination, formname) %}
-<ul class="pagination">
+<ul class="pagination mt0">
 	{% if pagination.page > 1 %}
 	<li><a href="javascript:Paginate.paginate('{{formname}}', 1)">«</a></li>
 	<li><a href="javascript:Paginate.paginate('{{formname}}', {{pagination.prev_num}})">‹</a></li>

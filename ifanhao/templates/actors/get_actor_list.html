@@ -1,22 +1,36 @@
 {% extends "basic.html" %} 
 {% block title %} AV女优 - [这里有你的女神] {% endblock title %} 
+{% block script_import %}
+<script type="text/javascript" src="/static/js/modules/actors.js"></script>
+{% endblock script_import%}
 {% block content %}
+{% from '/marco/pagination.html' import pagebar with context %} 
 <div class="row">
     <div class="col-md-3">
         <div role="complementary">
 			<ul class="nav nav-stacked nav-pills">
 				<li>
-					<form id="f_search" name="f_search" method="post" onsubmit="javascript:A.search()">
-						<div class="input-group">
-							<input id="k" name="k" value="{{k|default('')}}" class="form-control" placeholder="演员"> <span
-								class="input-group-btn">
-								<button class="btn btn-success" type="submit">&nbsp;Goooo!&nbsp;</button>
-							</span>
-						</div>
-					</form>
-					<div class="mb12"></div>
+				    <div class="row mb12">
+                        <div class="col-md-12">
+							<form id="f_search" name="f_search" method="get" onsubmit="javascript:Actors.search()">
+								<div class="input-group">
+									<input id="k" name="k" value="{{k|default('')}}" class="form-control" placeholder="演员"> <span
+										class="input-group-btn">
+										<button class="btn btn-success" type="submit">&nbsp;Goooo!&nbsp;</button>
+									</span>
+								</div>
+							</form>
+					     </div>
+                    </div>
+					<div class="row">
+		                <div class="col-md-12">
+		                  <div class="well well-sm">
+		                                                          这边的演员名字是日文的，比如说 <code>苍井空</code> 空实际上是 <code>蒼井そら</code>, 你可以直接搜索 <code>井</code>
+                          </div>
+		                </div>
+		            </div>
 				</li>
-				<hr/>
+				<li><hr></li>
 				<li>
 					<div class="panel panel-default">
 						<div class="panel-heading">演员信息</div>
@@ -52,6 +66,9 @@
         <div class="alert alert-info text-center">
                                             演员图片整理中，页面还在修订。
         </div>
+        <div class="row">
+        	<div class="col-md-12">{{ pagebar(pagination, 'f_search') }}</div>
+        </div>
 		<div class="row">
 			{% for actor in pagination.items %}
 			<div id="a_{{actor.id}}" class="col-sm-4 col-md-3 mb12">
@@ -66,6 +83,9 @@
 			</div>
 			{% endfor %}
 		</div>
+		<div class="row">
+        	<div class="col-md-12">{{ pagebar(pagination, 'f_search') }}</div>
+        </div>
 	</div>	
 </div>
 {% endblock %}
