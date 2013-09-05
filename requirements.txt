@@ -1,5 +1,6 @@
 Flask
 Werkzeug
+markdown
 Flask-Assets
 Flask-Script
 flask-testing

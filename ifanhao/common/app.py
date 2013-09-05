@@ -134,6 +134,9 @@ def init_interceptors():
     from ifanhao.common.web.contexts import current_bp_processor
     app.context_processor(current_bp_processor)
 
+    from ifanhao.common.web.filters import setup_filters
+    setup_filters(app)
+
 
 def setup_flask_initial_options():
 
