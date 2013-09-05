@@ -138,8 +138,10 @@ def init_interceptors():
     setup_render_as_interceptor(app)
     setup_formdata_interceptor(app)
 
-    from ifanhao.common.web.contexts import current_bp_processor
+    from ifanhao.common.web.contexts import (current_bp_processor,
+                                             pro_version_processor)
     app.context_processor(current_bp_processor)
+    app.context_processor(pro_version_processor)
 
     from ifanhao.common.web.filters import setup_filters
     setup_filters(app)

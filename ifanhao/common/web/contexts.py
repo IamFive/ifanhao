@@ -4,6 +4,7 @@
 # Created on 2013-8-24
 #
 from flask.globals import request, current_app
+from ifanhao import version
 
 def current_bp_processor():
     if request.endpoint:
@@ -11,3 +12,6 @@ def current_bp_processor():
         current_app.logger.debug('current bp is: {0}'.format(bp))
         return dict(bp=bp)
     return dict()
+
+def pro_version_processor():
+    return dict(v=version())
