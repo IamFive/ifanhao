@@ -4,12 +4,13 @@
 # Created on 2013-8-20
 #
 
-from ac_client.client import AcClient
+# from ac_client.client import AcClient
 from flask import Flask, render_template, request
 from flask.globals import g, current_app
 from flask.helpers import url_for
 from flask.wrappers import Response
 from flask_sqlalchemy import SQLAlchemy
+from flaskext.uploads import configure_uploads
 from ifanhao.common import error_code
 from ifanhao.common.exceptions import FriendlyException
 from ifanhao.common.interceptors import setup_formdata_interceptor, \
@@ -22,10 +23,9 @@ from ifanhao.constants import ROOT, STATIC_URL_PATH
 from logging import Formatter
 from logging.handlers import TimedRotatingFileHandler
 from werkzeug.utils import redirect
+from werkzeug.wsgi import SharedDataMiddleware
 import json
 import os
-from flaskext.uploads import configure_uploads
-from werkzeug.wsgi import SharedDataMiddleware
 
 
 app = None
