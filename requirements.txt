@@ -9,6 +9,6 @@ sqlalchemy
 flask-sqlalchemy
 colander
 ColanderAlchemy
-ac-client
+#ac-client
 cssmin
 PyYAML
