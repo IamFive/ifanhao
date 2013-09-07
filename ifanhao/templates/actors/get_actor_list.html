@@ -5,6 +5,11 @@
 {% endblock script_import%}
 {% block content %}
 {% from '/marco/pagination.html' import pagebar with context %}
+<div class="row mt20">
+        <div class="alert alert-warning text-center">
+            <strong>图片还在整理收集中</strong>
+        </div>
+</div>
 <div class="row mb20" >
     <div class="row mb6">
         <div class="col-md-6 col-md-offset-2">
@@ -35,7 +40,7 @@
                  <div class="thumbnail{% if loop.first %} thumbnail-info{% endif %}">
                      <img alt="头像" src="/m/avatar/1.jpg" class="img-rounded avatar">
                      <div class="caption text-center">
-                         <a id="actor_{{actor.id}}_link" href="#actor_{{actor.id}}_panel" itemprop="collapse" group="actor">
+                         <a id="actor_{{actor.id}}_link" href="#a{{actor.id}}" itemprop="collapse" group="actor">
                             {{actor.name}}
                          </a>
                      </div>
@@ -46,7 +51,7 @@
     </div>
 	<div class="col-md-4">
 		{% for actor in pagination.items %}
-		<div id="actor_{{actor.id}}_panel" group="actor" itemprop="collapse-content"
+		<div id="a{{actor.id}}" group="actor" itemprop="collapse-content"
 		   class="panel panel-info {% if not loop.first %}collapse{% endif %}{% if loop.first %}in{% endif %}">
 			<div class="panel-heading">演员信息</div>
 			<div class="panel-body">
