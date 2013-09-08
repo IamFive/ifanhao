@@ -13,7 +13,9 @@ bp_sitemap = Blueprint('sitemap', __name__)
 
 domain = 'http://www.mailoop.com'
 
-@bp_sitemap.route('/', methods=['GET'])
+@bp_sitemap.route('/sitemap/', methods=['GET'])
+@bp_sitemap.route('/sitemap.xml', methods=['GET'])
+@bp_sitemap.route('/sitemap_baidu.xml', methods=['GET'])
 def sitemap():
     """Generate sitemap.xml. Makes a list of urls and date modified."""
     # user model pages
