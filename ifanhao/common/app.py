@@ -66,6 +66,9 @@ def init_bp_modules():
     from ifanhao.av.views.actors import bp_actors
     app.register_blueprint(bp_actors, url_prefix='/b')
 
+    from ifanhao.sitemaps import bp_sitemap
+    app.register_blueprint(bp_sitemap, url_prefix='/sitemap')
+
     #    server media folder
     app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
         app.config.get('MEDIA_URL_PATH') :  app.config.get('MEDIA_FOLDER')
