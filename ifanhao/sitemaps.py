@@ -11,6 +11,7 @@ from flask.templating import render_template
 
 bp_sitemap = Blueprint('sitemap', __name__)
 
+domain = 'http://www.mailoop.com'
 
 @bp_sitemap.route('/', methods=['GET'])
 def sitemap():
@@ -22,7 +23,7 @@ def sitemap():
     for av in avs:
         url = url_for('avs.get_av', code=av.code)
         modified_time = av.published_on.date().isoformat()
-        pages.append([url, modified_time])
+        pages.append([domain + url, modified_time])
 
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     response = make_response(sitemap_xml)
