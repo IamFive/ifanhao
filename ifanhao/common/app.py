@@ -7,7 +7,7 @@
 # from ac_client.client import AcClient
 from flask import Flask, render_template, request
 from flask.globals import g, current_app
-from flask.helpers import url_for
+from flask.helpers import url_for, send_file
 from flask.wrappers import Response
 from flask_sqlalchemy import SQLAlchemy
 from flaskext.uploads import configure_uploads
@@ -89,7 +89,7 @@ def init_bp_modules():
     @app.route('/robots.txt')
     @smart_render()
     def robots():
-        return render_template('robots.txt')
+        return send_file('./templates/robots.txt')
 
     @app.route('/favicon.ico')
     def favicon():
