@@ -86,6 +86,11 @@ def init_bp_modules():
     def index():
         pass
 
+    @app.route('/robots.txt')
+    @smart_render()
+    def robots():
+        return render_template('robots.txt')
+
     @app.route('/favicon.ico')
     def favicon():
         return redirect(url_for('static', filename='favicon.ico'))
