@@ -1,0 +1,15 @@
+{% if magnets %}
+{% for magnet in magnets %}
+<tr>
+    <td>{{loop.index}}</td>
+    <td><a href="{{magnet.magnet}}">{{magnet.name}}</a></td>
+    <td>{{magnet.size}}</td>
+    <td>{{magnet.date}}</td>
+    <td>{{magnet.seeders}}/{{magnet.leechers}}/{{magnet.completed}}</td>
+</tr>
+{% endfor %}
+{% else %}
+<tr>
+    <td colspan="5"><div class="text-center">未搜索到数据</div></td>
+</tr>
+{% endif %}

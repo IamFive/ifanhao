@@ -9,6 +9,7 @@ from ifanhao.common.web.renderer import smart_render
 from ifanhao.av.models import Av, Tag, Actor
 from flask.globals import g, current_app
 from sqlalchemy.sql.expression import func, desc
+from ifanhao.common.tools.tokyo_cli import search
 
 bp_avs = Blueprint('avs', __name__)
 
@@ -47,6 +48,12 @@ def get_av_list(page=1):
 @bp_avs.route('/<code>', methods=['GET'])
 @smart_render()
 def get_av(code):
-    av = Av.query.filter_by(code=code).one()
+    av = Av.query.filter_by(code=code).first()
     return dict(av=av)
+
+
+@bp_avs.route('/<code>/magnet', methods=['GET'])
+@smart_render()
+def get_magnet(code):
+    return dict(magnets=search(code))
 

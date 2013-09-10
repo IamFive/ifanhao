@@ -6,3 +6,9 @@ A.search = function() {
 	$("#f_search").attr("action", '/a/' + page);
 	return true;
 }
+
+A.loadMagnet = function(code) {
+	$.get('/a/' + code + '/magnet', function(html){
+		$('#magnet-content').html(html)
+	});
+}
