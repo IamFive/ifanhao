@@ -5,9 +5,9 @@
 <script type="text/javascript" src="/static/js/modules/a.js"></script>
 {% endblock script_import%}
 
-{% block kw %}番号,{{av.code}},{{av.title}},{% for actor in av.actors %}{{actor.name}}{% if not loop.last %},{% endif %}{% endfor%}{% endblock%} 
+{% block kw %}番号,{{av.code}},{{av.code}}.torrent,{{av.title}},{% for actor in av.actors %}{{actor.name}}{% if not loop.last %},{% endif %}{% endfor%}{% endblock%} 
 
-{% block desc %}番号-[{{av.code}}]，标题-[{{av.title}}] ：由[{{av.publisher}}]在{{av.published_on}}发行，{% for actor in av.actors %}{{actor.name}}{% if not loop.last %},{% endif %} {% endfor%}等演员参与演出, 片长{{av.length}}分钟, 分类为：{% for tag in av.tags %}{{tag.name}}{% if not loop.last %},{% endif %} {% endfor%}
+{% block desc %}番号-[{{av.code}}]，标题-[{{av.title}}] ：由[{{av.publisher}}]在{{av.published_on}}发行，{% for actor in av.actors %}{{actor.name}}{% if not loop.last %},{% endif %} {% endfor%}等演员参与演出, 片长{{av.length}}分钟, 分类为：{% for tag in av.tags %}{{tag.name}}{% if not loop.last %},{% endif %} {% endfor%}.本站还提磁力链, :)
 {% endblock%} 
 
 {% block content %}
