@@ -3,6 +3,9 @@
 <tr>
     <td>{{loop.index}}</td>
     <td><a href="{{magnet.magnet}}">{{magnet.name}}</a></td>
+    <td>
+    	<button type="button" class="btn btn-link"
+    		onclick="A.copy('{{magnet.magnet}}')">拷贝</button></td>
     <td>{{magnet.size}}</td>
     <td>{{magnet.date}}</td>
     <td>{{magnet.seeders}}/{{magnet.leechers}}/{{magnet.completed}}</td>
