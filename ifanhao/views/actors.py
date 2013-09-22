@@ -6,7 +6,7 @@
 
 from flask.blueprints import Blueprint
 from ifanhao.common.web.renderer import smart_render
-from ifanhao.av.models import Actor
+from ifanhao.models import Actor
 from flask.globals import g
 
 bp_actors = Blueprint('actors', __name__)

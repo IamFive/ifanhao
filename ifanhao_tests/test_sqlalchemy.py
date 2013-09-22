@@ -16,7 +16,7 @@ class Test(BasicTestCase):
     def test_many2many(self):
 
         with self.app.test_request_context():
-            from ifanhao.av.models import Av, Tag
+            from ifanhao.models import Av, Tag
             av = Av.query.first()
             print av.tags
             print av

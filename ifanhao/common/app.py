@@ -60,10 +60,10 @@ def init_bp_modules():
     from ifanhao.comics.views import bp_comics
     app.register_blueprint(bp_comics, url_prefix='/comics')
 
-    from ifanhao.av.views.avs import bp_avs
+    from ifanhao.views.avs import bp_avs
     app.register_blueprint(bp_avs, url_prefix='/a')
 
-    from ifanhao.av.views.actors import bp_actors
+    from ifanhao.views.actors import bp_actors
     app.register_blueprint(bp_actors, url_prefix='/b')
 
     from ifanhao.sitemaps import bp_sitemap
@@ -186,7 +186,7 @@ def init_db_engine():
 
     # register models
     #    import icomic.comics.models
-    import ifanhao.av.models
+    import ifanhao.models
 
 
 def init_uploads():

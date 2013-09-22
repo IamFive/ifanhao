@@ -5,6 +5,7 @@ Flask-Assets
 Flask-Script
 flask-testing
 Flask-Uploads
+Flask-login
 sqlalchemy
 flask-sqlalchemy
 colander

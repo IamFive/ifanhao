@@ -3,7 +3,7 @@
 # @author: Five
 # Created on 2013-9-8
 #
-from ifanhao.av.models import Av
+from ifanhao.models import Av
 from flask.blueprints import Blueprint
 from flask.helpers import url_for, make_response
 from flask.templating import render_template

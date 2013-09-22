@@ -5,11 +5,11 @@
 #
 
 from flask.blueprints import Blueprint
-from ifanhao.common.web.renderer import smart_render
-from ifanhao.av.models import Av, Tag, Actor
 from flask.globals import g, current_app
-from sqlalchemy.sql.expression import func, desc
 from ifanhao.common.tools.tokyo_cli import search
+from ifanhao.common.web.renderer import smart_render
+from ifanhao.models import Av, Tag, Actor
+from sqlalchemy.sql.expression import func, desc
 
 bp_avs = Blueprint('avs', __name__)
 
