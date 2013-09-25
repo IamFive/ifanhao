@@ -9,6 +9,7 @@ import traceback
 import urlparse
 import urllib
 from multiprocessing.pool import ThreadPool
+import time
 
 
 BASE_URL = 'http://www.javlibrary.com/cn/'
@@ -65,7 +66,7 @@ def get_grouped_av_links(group_url):
         page += 1
         try:
             print 'scrum page {} for group {}'.format(page, group_url)
-            paginate_url = build_url(url, dict(mode=1, page=page))
+            paginate_url = build_url(url, dict(mode=2, page=page))
 
             html = requests.get(paginate_url).content
             document = BeautifulSoup(html)
@@ -96,16 +97,22 @@ def get_av(token):
 
     url = build_url(BASE_URL, dict(v=token.strip()))
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=8)
         if response.status_code != 200:
-            print '== url:' + url + ', status: ' + str(response.status_code)
+            print 'Faild: ' + token + ', status: ' + str(response.status_code)
+            time.sleep(60)
+            print 'try sleep for 60s'
             return None
 
         html = response.content
         doc = BeautifulSoup(html)
-        title = get_text(doc, 'div#video_title div.text')
-
+        title = get_text(doc, 'div#video_title .post-title a')
         code = get_text(doc, 'div#video_id td.text')
+
+        if title.index(code) > -1:
+            title = after(title, code).strip()
+
+
         published_on = get_text(doc, 'div#video_date td.text')
         director = get_text(doc, 'div#video_director span.director a')
         maker = get_text(doc, 'div#video_maker span.maker a')
@@ -114,25 +121,26 @@ def get_av(token):
         actors = '|'.join([actor.get_text() for actor in doc.select('div#video_cast span.star a')])
         result = ','.join(['"' + t.encode('utf-8') + '"' for
                 t in (title, code, published_on, director, maker, label, tags, actors)])
-        print 'for token:' + token + ', reult :' + result
+        print 'Success: ' + token
         return result
     except:
-        print '== url:' + url
-        print traceback.format_exc()
+        print 'Faild: ' + token
         return None
 
 def get_avs():
-    with open(r'uniq.txt', 'r') as f:
+    with open(r'tokens.txt', 'r')  as f:
         lines = f.readlines()
-        pool = ThreadPool(5)
-        result = pool.map(get_av, lines)
-        success = filter(lambda a:a is not None , result)
-        with open('avs.txt', 'w') as f1:
-            f1.write('\n'.join(success))
-            f.write('\n')
-            f.flush()
-        pool.close()
+
+    with open('a.txt', 'a') as f2:
+        for line in lines:
+            result = get_av(line)
+            if result:
+                f2.write(result)
+                f2.write('\n')
+
+        f2.write('\n')
+        f2.flush()
 
 get_avs()
-# get_av('javliadd6a')
-# print '\n'.join(get_group_names())
+# get_av_links()
+# print '\n'.join(get_av('javlial4si'))
