@@ -114,13 +114,14 @@ def get_av(token):
 
 
         published_on = get_text(doc, 'div#video_date td.text')
+        l = get_text(doc, 'div#video_length span.text')
         director = get_text(doc, 'div#video_director span.director a')
         maker = get_text(doc, 'div#video_maker span.maker a')
         label = get_text(doc, 'div#video_label span.label a')
         tags = '|'.join([tag.get_text() for tag in doc.select('div#video_genres a')])
         actors = '|'.join([actor.get_text() for actor in doc.select('div#video_cast span.star a')])
         result = ','.join(['"' + t.encode('utf-8') + '"' for
-                t in (title, code, published_on, director, maker, label, tags, actors)])
+                t in (title, code, published_on, l, director, maker, label, tags, actors)])
         print 'Success: ' + token
         return result
     except:
@@ -143,4 +144,4 @@ def get_avs():
 
 get_avs()
 # get_av_links()
-# print '\n'.join(get_av('javlial4si'))
+#print get_av('javlijbpti')

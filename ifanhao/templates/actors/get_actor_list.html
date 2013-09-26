@@ -38,7 +38,11 @@
             {% for actor in pagination.items %}
              <div class="col-sm-4 col-md-3 mb12">
                  <div class="thumbnail{% if loop.first %} thumbnail-info{% endif %}">
-                     <img alt="头像" src="/m/avatar/1.jpg" class="img-rounded avatar">
+                     {% if actor.avatar %}
+                     <img alt="头像" src="/m/avatar/{{actor.avatar}}" class="img-rounded avatar">
+                     {% else %}
+                     <img alt="头像" src="/m/avatar/0.jpg" class="img-rounded avatar">
+                     {% endif %}
                      <div class="caption text-center">
                          <a id="actor_{{actor.id}}_link" href="#a{{actor.id}}" itemprop="collapse" group="actor">
                             {{actor.name}}

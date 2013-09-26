@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="col-md-10">
                                 {% for actor in av.actors %}
-                                    {{actor.name}}{% if not loop.last %},{% endif %}
+                                    <a href="/b/?k={{actor.name}}">{{actor.name}}<span class="glyphicon glyphicon-open"></a>{% if not loop.last %},{% endif %}
                                 {% endfor %}
                                 </div>
                             </div>

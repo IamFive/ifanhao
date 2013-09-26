@@ -4,3 +4,4 @@
 '''
 
 DEBUG = True
+MEDIA_FOLDER = r'E:\web\medias'
