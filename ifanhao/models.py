@@ -6,7 +6,7 @@
 from ifanhao.common.app import db
 from ifanhao.common.sa_orm_ext import BaseModelMixin
 from sqlalchemy.schema import Column, ForeignKey, Table
-from sqlalchemy.types import Integer, String, Date, DATETIME, TIMESTAMP
+from sqlalchemy.types import Integer, String, Date, DATETIME, TIMESTAMP, DATE
 from sqlalchemy.orm import relationship
 
 
@@ -71,7 +71,7 @@ class Av(db.Model, BaseModelMixin):
     id = Column(Integer, primary_key=True)
     title = Column(String(256), nullable=False)
     code = Column(String(16), nullable=False)
-    published_on = Column(TIMESTAMP, nullable=False)
+    published_on = Column(DATE, nullable=False)
     length = Column(Integer, nullable=False)
     director = Column(String(64))
     maker = Column(String(64))

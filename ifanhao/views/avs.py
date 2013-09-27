@@ -10,6 +10,7 @@ from ifanhao.common.tools.tokyo_cli import search
 from ifanhao.common.web.renderer import smart_render
 from ifanhao.models import Av, Tag, Actor
 from sqlalchemy.sql.expression import func, desc
+import datetime
 
 bp_avs = Blueprint('avs', __name__)
 
@@ -25,7 +26,7 @@ def get_av_list(page=1):
     k = g.formdata.get('k', '')
     tags = g.formdata.getlist('tags', int)
 
-    q = Av.query
+    q = Av.query.filter(Av.published_on < datetime.date.today())
     if len(tags):
         grouped_tags = current_app.db.session.query(func.group_concat(Tag.id))\
                         .filter(Tag.id.in_(tags)).group_by(Tag.category).all()
